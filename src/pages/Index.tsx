@@ -8,17 +8,20 @@ const Index = () => {
     {
       title: "API Management System",
       description: "Система управления API с мониторингом производительности и автоматическим масштабированием",
-      tech: ["Node.js", "Express", "MongoDB"]
+      tech: ["Node.js", "Express", "MongoDB"],
+      image: "/img/db31e4f5-3049-441a-a783-7c689c0dad2d.jpg"
     },
     {
       title: "Data Analytics Platform",
       description: "Платформа для анализа больших данных с визуализацией и машинным обучением",
-      tech: ["Python", "FastAPI", "PostgreSQL"]
+      tech: ["Python", "FastAPI", "PostgreSQL"],
+      image: "/img/d554a101-5e2a-45e9-b234-458f1f36eb2a.jpg"
     },
     {
       title: "Microservices Architecture",
       description: "Архитектура микросервисов с использованием контейнеризации и оркестрации",
-      tech: ["Docker", "Kubernetes", "Redis"]
+      tech: ["Docker", "Kubernetes", "Redis"],
+      image: "/img/949c5439-4da2-4cfe-968d-5f405450f3a9.jpg"
     }
   ];
 
@@ -87,7 +90,14 @@ const Index = () => {
             <h2 className="text-3xl font-bold text-center mb-16">Проекты</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project, index) => (
-                <Card key={index} className="group hover:shadow-lg transition-all duration-300">
+                <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
                   <CardHeader>
                     <CardTitle className="text-xl group-hover:text-primary transition-colors">
                       {project.title}
@@ -97,14 +107,14 @@ const Index = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.tech.map((tech, techIndex) => (
                         <Badge key={techIndex} variant="outline" className="text-xs">
                           {tech}
                         </Badge>
                       ))}
                     </div>
-                    <Button variant="ghost" className="w-full mt-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Button variant="ghost" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                       <Icon name="ExternalLink" size={16} className="mr-2" />
                       Подробнее
                     </Button>
